@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% block body %}
+    <div class="container my-5" style="padding: 5%;">
+        <table class="table" style="color: aliceblue;">
+            <thead>
+              <h2 style="color: aliceblue;">Transfer History</h2>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">SNo</th>
+                <th scope="col">SENDER NAME</th>
+                <th scope="col">SENDER ID</th>
+                <th scope="col">RECEIVER NAME</th>
+                <th scope="col">RECEIVER ID</th>
+                <th scope="col">AMOUNT TRANSFERRED</th>
+                <th scope="col">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for details in transferDetails %}
+              <tr><th scope="row">{{loop.transferhistory}}</th> 
+                <td>{{details["rowid"]}}</td>
+                <td>{{details["SenderName"]}}</td>
+                <td>{{details["senderId"]}}</td>
+                <td>{{details["ReceiverName"]}}</td>
+                <td>{{details["receiverId"]}}</td>
+                <td>{{details["amountTransferred"]}}</td>
+                <td>
+                  <a href='https://vai-basic-bank-system.herokuapp.com/transfer/{{details["senderId"]}}' type="button" class="btn btn-light btn-sm"
+                   style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" >TRANSFER</button>
+                </td>
+              </tr>
+              {% endfor %}  
+            </tbody>
+          </table>
+    </div>
+{% endblock body %}

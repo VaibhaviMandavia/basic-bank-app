@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+{% block body %}
+    <div class="container my-5" style=" padding: 5%;">
+        <table class="table" style="color: aliceblue;">
+            <thead>
+              <h2 style="color: aliceblue;">Customer Details</h2>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">SNo</th>
+                <th scope="col">NAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">TRANSACTION-ID</th>
+                <th scope="col">CURRENT BALANCE</th>
+                <th scope="col">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for details in customerDetails %}
+              <tr><th scope="row">{{loop.details}}</th>
+                <td>{{details["rowid"]}}</td> 
+                <td>{{details["customerName"]}}</td>
+                <td>{{details["email"]}}</td>
+                <td>{{details["transacId"]}}</td>
+                <td>{{details["Balance"]}}</td>
+                <td>
+                    <a href='/getParticularTransferHistory/{{details["transacId"]}}/' type="button" class="btn btn-light btn-sm" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-right:2px;">VIEW HISTORY</button>
+                    <a href='http://vai-basic-bank-system.herokuapp.com/transfer/{{details["transacId"]}}/' type="button" class="btn btn-light btn-sm" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">TRANSFER</button>
+                </td>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+    </div>
+{% endblock body %}

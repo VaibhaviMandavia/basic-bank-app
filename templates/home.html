@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <style>
+            body {
+                height: 100%;
+            }
+            .bg {
+              background-image: url('https://images.unsplash.com/photo-1556767223-80843e91e7d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+              height: 100%;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size:100% 100%;
+            }
+            header {
+                color :rgb(255, 255, 255);
+                font-size: 90px;
+                padding: 45px;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                background-color:transparent;
+                text-align: center;
+            }
+            button {
+                background-color:transparent; 
+                border:none;
+                border-radius: 5px;
+                color: rgb(233, 230, 240); 
+                font-family:Arial, Helvetica, sans-serif;
+                font-size: 25px;
+                padding: 20px 175px;
+                float:left;
+            }
+
+            button:hover {
+                background-color:rgb(5, 5, 7);
+                color: white;
+            }
+    
+        </style>
+    </head>
+    <body>
+        <div class="bg">
+            <header>
+                Basic Banking System
+            </header>
+            <div>
+                <button id="home">Home</button>
+                <button id="viewAllCustomers">View All Customers</button>
+                <button id="transferHistory">Transfer History</button>
+            </div>    
+
+            {% block body %}
+            <div style="padding: 10%;" >
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇ Create a simple dynamic website which has the following specs.</p>
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇ Start with creating a dummy data in database for upto 10  customers.</p>
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇Database options: Mysql, Mongo, Postgres, etc.  Customers table will have basic fields such as name, email,  current balance etc. Transfers table will record all transfers  happened.</p> 
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇ Flow: Home Page > View all Customers > Select and View one  Customer > Transfer Money > Select customer to transfer to >  View all Customers .</p>  
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇ No Login Page. No User Creation. Only transfer of money  between multiple users.</p>  
+                <p style="color: aliceblue; font-size: x-large; text-align: center;">◇ Host the website at 000webhost, github.io, heroku app or any  other free hosting provider. Check in code in gitlab.</p> 
+            </div>
+            {% endblock body %}
+            
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            let homePage = function() {
+                document.location = "http://vai-basic-bank-system.herokuapp.com/"
+            }
+
+
+            let transferamount = function(senderid,receiverid,amounttransferred) {
+                $.get("http://vai-basic-bank-system.herokuapp.com/transferamount/"+senderid+"/"+receiverid+"/"+amounttransferred+"/", function(data) {
+                    homePage();
+                });
+            }
+
+            let getAllCustomerDetails = function() {
+                document.location = "http://vai-basic-bank-system.herokuapp.com/getAllCustomerDetails/";
+            }
+
+        
+            let allTransferDetails = function() {
+                document.location = "http://vai-basic-bank-system.herokuapp.com/getAllTransferHistory/"
+            }
+
+            $("#home").click(function(event) {
+                homePage();
+            });
+
+            $("#viewAllCustomers").click(function(event) {
+                getAllCustomerDetails();
+            });
+
+            $("#transferHistory").click(function(event) {
+                allTransferDetails();
+            });
+        
+            $("#transferamount").click(function(event) {
+                let senderid = $("#formGroupExampleInput").val();
+                let receiverid = $("#formGroupExampleInput2").val();
+                let amounttransferred = $("#formGroupExampleInput3").val();
+                transferamount(senderid,receiverid,amounttransferred);
+            });
+        });
+    </script>
+
+        
+
+</html>

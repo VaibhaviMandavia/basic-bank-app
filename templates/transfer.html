@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% block body %}
+<div style="padding: 10%;">   
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label" style="color: white;">Sender's Transaction Id</label>
+    <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Enter your id...">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label" style="color: white;">Recipient's Transaction Id</label>
+    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Enter recipient's id..."> 
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput3" class="form-label" style="color: white;">Amount</label>
+    <input type="number" class="form-control" id="formGroupExampleInput3" placeholder="Enter amount"> 
+  </div>
+  <button type="button" class="btn btn-light btn-sm" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" id="transferamount">TRANSFER</button>
+</div>
+{% endblock body %}

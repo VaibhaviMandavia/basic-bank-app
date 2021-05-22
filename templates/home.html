@@ -74,23 +74,23 @@
 
         $(document).ready(function () {
             let homePage = function() {
-                document.location = "https://vai-basic-bank-system.herokuapp.com/"
+                document.location = "https://vai-bank-app.herokuapp.com/"
             }
 
 
             let transferamount = function(senderid,receiverid,amounttransferred) {
-                $.get("https://vai-basic-bank-system.herokuapp.com/transferamount/"+senderid+"/"+receiverid+"/"+amounttransferred+"/", function(data) {
+                $.get("https://vai-bank-app.herokuapp.com/transferamount/"+senderid+"/"+receiverid+"/"+amounttransferred+"/", function(data) {
                     homePage();
                 });
             }
 
             let getAllCustomerDetails = function() {
-                document.location = "https://vai-basic-bank-system.herokuapp.com/getAllCustomerDetails/";
+                document.location = "https://vai-bank-app.herokuapp.com/getAllCustomerDetails/";
             }
 
         
             let allTransferDetails = function() {
-                document.location = "https://vai-basic-bank-system.herokuapp.com/getAllTransferHistory/"
+                document.location = "https://vai-bank-app.herokuapp.com/getAllTransferHistory/"
             }
 
             $("#home").click(function(event) {

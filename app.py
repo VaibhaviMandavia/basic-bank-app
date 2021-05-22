@@ -8,7 +8,7 @@ CORS(app)
 conn = sqlite3.connect('myBank.db')
 c = conn.cursor()
 #c.execute('''CREATE TABLE CustomerDetails (rowid INT, customerName VARCHAR(20), email VARCHAR(50), transacId INT PRIMARY KEY, Balance INT)''')
-#c.execute('''CREATE TABLE TransferDetails (rowid INT PRIMARY KEY AUTOINCREMENT, SenderName VARCHAR(20), senderId INT, ReceiverName VARCHAR(20), receiverId INT, amountTransferred INT)''')
+#c.execute('''CREATE TABLE TransferDetails (rowid INTEGER PRIMARY KEY AUTOINCREMENT, SenderName VARCHAR(20), senderId INT, ReceiverName VARCHAR(20), receiverId INT, amountTransferred INT)''')
 #records = [(1, 'Peter', 'pet@gmail.com', 101, 10000),
 #              (2, 'Amy', 'amy@gmail.com', 102, 50000),
 #              (3, 'Bob', 'bob@gmail.com', 103, 5000),
@@ -30,7 +30,7 @@ def homepage():
 
 @app.route('/transfer/<int:senderid>/')
 def transferpage(senderid):
-    return render_template('transfer.html',senderid=senderid)
+    return render_template('transfer.html')
     
 
 @app.route('/transferamount/<int:sid>/<int:rid>/<int:amt>/')
